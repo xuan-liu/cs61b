@@ -81,11 +81,15 @@ public class IntList {
      */
 
     public static IntList dcatenate(IntList A, IntList B) {
+        if (A == null) {
+            A = B;
+            return A;
+        }
         IntList Q = A;
-        while (Q.rest != null){
+        while (Q.rest != null) {
             Q = Q.rest;
         }
-        while (B != null){
+        while (B != null) {
             Q.rest = new IntList(B.first, null);
             Q = Q.rest;
             B = B.rest;
@@ -102,7 +106,7 @@ public class IntList {
         if (A == null) {
             return B;
         }
-        return new IntList(A.first , catenate(A.rest, B));
+        return new IntList(A.first, catenate(A.rest, B));
 
         // Iterative Method
         // IntList Q = new IntList(A.first, null);
