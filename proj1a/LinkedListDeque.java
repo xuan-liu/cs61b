@@ -22,13 +22,13 @@ public class LinkedListDeque<T> {
         size = 0;
     }
 
-    public LinkedListDeque(T item) {
-        sentinel = new TNode(null, null, null);
-        TNode first = new TNode(sentinel, item, sentinel);
-        sentinel.next = first;
-        sentinel.prev = first;
-        size = 1;
-    }
+//    public LinkedListDeque(T item) {
+//        sentinel = new TNode(null, null, null);
+//        TNode first = new TNode(sentinel, item, sentinel);
+//        sentinel.next = first;
+//        sentinel.prev = first;
+//        size = 1;
+//    }
 
     public void addFirst(T item) {
         /** Adds an item of type T to the front of the deque. */
@@ -123,7 +123,7 @@ public class LinkedListDeque<T> {
     }
 
     private T getRecursHelper(int index, TNode pointer) {
-        if (index == 0){
+        if (index == 0) {
             return pointer.next.item;
         } else {
             return getRecursHelper(index - 1, pointer.next);

@@ -32,8 +32,7 @@ public class ArrayDeque<T> {
             int sizeOfSecondHalf = size - sizeOfFirstHalf;
             System.arraycopy(items, beginning, newItems, 0, sizeOfFirstHalf);
             System.arraycopy(items, 0, newItems, sizeOfFirstHalf, sizeOfSecondHalf);
-        }
-        else {
+        } else {
             System.arraycopy(items, beginning, newItems, 0, size);
         }
         nextFirst = newItems.length - 1;
@@ -42,7 +41,7 @@ public class ArrayDeque<T> {
     }
 
     /** Check whether it should be resize */
-    private void checkResize(){
+    private void checkResize() {
         if (size == items.length) {
             resize(size * 2);
         }
