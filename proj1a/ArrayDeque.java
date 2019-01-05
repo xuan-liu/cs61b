@@ -140,19 +140,45 @@ public class ArrayDeque<Item> {
         return last;
     }
 
-    /** Returns true if the ith item exists, false otherwise. */
-    private boolean isExist(int i) {
-        if (i > nextFirst || i < nextLast) {
-            return true;
+    public Item get(int index) {
+        if (index < 0 || index > size - 1) {
+            return null;
+        } else if (nextFirst + index + 1 < items.length) {
+            return items[nextFirst + index + 1];
+        } else {
+            return items[nextFirst + index + 1 - items.length];
         }
-        return false;
     }
 
-    /** Gets the item at the given index, if no such items exists, returns null. */
-    public Item get(int i) {
-        if (isExist(i)) {
-            return items[i];
-        }
-        return null;
-    }
+//        public static void main(String[] args){
+//        ArrayDeque L = new ArrayDeque();
+//        L.addFirst(1);
+//        L.addFirst(2);
+//        L.addFirst(3);
+//        L.printDeque();
+//        System.out.println(L.get(1));
+//        L.addLast(0);
+//        System.out.println(L.removeLast());
+//        L.addLast(2);
+//        System.out.println(L.removeLast());
+//        L.addFirst(4);
+//        System.out.println(L.removeLast());
+//        L.addFirst(6);
+//        L.addLast(7);
+//        L.addLast(9);
+//        L.addFirst(11);
+//        L.addFirst(12);
+//        L.addLast(13);
+//        L.addLast(14);
+//        System.out.println(L.removeFirst());
+//        L.addFirst(16);
+//        L.addLast(17);
+//        L.addLast(19);
+//        System.out.println(L.get(4));
+////        L.removeFirst();
+////        L.removeLast();
+////        System.out.println(L.size());
+//        L.printDeque();
+////        System.out.println(L.get(3));
+//    }
 }
