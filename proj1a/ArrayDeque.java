@@ -140,36 +140,4 @@ public class ArrayDeque<T> {
             return items[nextFirst + index + 1 - items.length];
         }
     }
-
-//        public static void main(String[] args){
-//        ArrayDeque L = new ArrayDeque();
-//        L.addFirst(1);
-//        L.addFirst(2);
-//        L.addFirst(3);
-//        L.printDeque();
-//        System.out.println(L.get(1));
-//        L.addLast(0);
-//        System.out.println(L.removeLast());
-//        L.addLast(2);
-//        System.out.println(L.removeLast());
-//        L.addFirst(4);
-//        System.out.println(L.removeLast());
-//        L.addFirst(6);
-//        L.addLast(7);
-//        L.addLast(9);
-//        L.addFirst(11);
-//        L.addFirst(12);
-//        L.addLast(13);
-//        L.addLast(14);
-//        System.out.println(L.removeFirst());
-//        L.addFirst(16);
-//        L.addLast(17);
-//        L.addLast(19);
-//        System.out.println(L.get(4));
-////        L.removeFirst();
-////        L.removeLast();
-////        System.out.println(L.size());
-//        L.printDeque();
-////        System.out.println(L.get(3));
-//    }
 }

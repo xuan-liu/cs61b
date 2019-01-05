@@ -156,19 +156,4 @@ public class LinkedListDeque<T> {
 //            return null;
 //        }
 //    }
-
-//    public static void main(String[] args){
-////        LinkedListDeque L = new LinkedListDeque(2);
-//        LinkedListDeque<Integer> L = new LinkedListDeque<>();
-//        L.addFirst(1);
-//        L.addLast(3);
-//        L.addLast(4);
-////        L.removeFirst();
-////        L.removeLast();
-////        System.out.println(L.isEmpty());
-//        System.out.println(L.size());
-//        L.printDeque();
-//        System.out.println(L.get(2));
-//        L.printDeque();
-//    }
 }
