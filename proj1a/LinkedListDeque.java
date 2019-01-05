@@ -1,11 +1,11 @@
 public class LinkedListDeque<T> {
 
     private class TNode {
-        public T item;
-        public TNode next;
-        public TNode prev;
+        private T item;
+        private TNode next;
+        private TNode prev;
 
-        public TNode(TNode p, T i, TNode n){
+        public TNode(TNode p, T i, TNode n) {
             this.prev = p;
             this.item = i;
             this.next = n;
@@ -15,14 +15,14 @@ public class LinkedListDeque<T> {
     private TNode sentinel;
     private int size;
 
-    public LinkedListDeque(){
+    public LinkedListDeque() {
         sentinel = new TNode(null, null, null);
         sentinel.prev = sentinel;
         sentinel.next = sentinel;
         size = 0;
     }
 
-    public LinkedListDeque(T item){
+    public LinkedListDeque(T item) {
         sentinel = new TNode(null, null, null);
         TNode first = new TNode(sentinel, item, sentinel);
         sentinel.next = first;
@@ -30,7 +30,7 @@ public class LinkedListDeque<T> {
         size = 1;
     }
 
-    public void addFirst(T item){
+    public void addFirst(T item) {
         /** Adds an item of type T to the front of the deque. */
 
         TNode first = new TNode(sentinel, item, sentinel.next);
@@ -39,7 +39,7 @@ public class LinkedListDeque<T> {
         size = size + 1;
     }
 
-    public void addLast(T item){
+    public void addLast(T item) {
         /** Adds an item of type T to the back of the deque. */
 
         TNode last = new TNode(sentinel.prev, item, sentinel);
@@ -48,19 +48,19 @@ public class LinkedListDeque<T> {
         size = size + 1;
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         /** Returns true if deque is empty, false otherwise. */
 
         return size == 0;
     }
 
-    public int size(){
+    public int size() {
         /** Returns the number of items in the deque. */
 
         return size;
     }
 
-    public void printDeque(){
+    public void printDeque() {
         /** Prints the items in the deque from first to
          * last, separated by a space. */
 
@@ -72,11 +72,11 @@ public class LinkedListDeque<T> {
         System.out.println();
     }
 
-    public T removeFirst(){
+    public T removeFirst() {
         /** Removes and returns the item at the front of
          * the deque. If no such item exists, returns null. */
 
-        if (isEmpty()){
+        if (isEmpty()) {
             return null;
         }
 
@@ -89,11 +89,11 @@ public class LinkedListDeque<T> {
         return toRemove;
     }
 
-    public T removeLast(){
+    public T removeLast() {
         /** Removes and returns the item at the back of
          * the deque. If no such item exists, returns null. */
 
-        if (isEmpty()){
+        if (isEmpty()) {
             return null;
         }
 
@@ -106,7 +106,7 @@ public class LinkedListDeque<T> {
         return toRemove;
     }
 
-    public T get(int index){
+    public T get(int index) {
         /** Gets the item at the given index, where 0 is the front,
          * 1 is the next item, and so forth. If no such item exists,
          * returns null. Must not alter the deque! */
@@ -115,14 +115,14 @@ public class LinkedListDeque<T> {
             return null;
         }
         TNode pointer = sentinel;
-        while (index >= 0){
+        while (index >= 0) {
             index -= 1;
             pointer = pointer.next;
         }
         return pointer.item;
     }
 
-    private T getRecursHelper(int index, TNode pointer){
+    private T getRecursHelper(int index, TNode pointer) {
         if (index == 0){
             return pointer.next.item;
         } else {
@@ -130,10 +130,10 @@ public class LinkedListDeque<T> {
         }
     }
 
-    public T getRecursive(int index){
+    public T getRecursive(int index) {
         /** Same as get, but uses recursion. */
 
-        if (index < 0 || index > size - 1){
+        if (index < 0 || index > size - 1) {
             return null;
         } else {
             return getRecursHelper(index, sentinel);
@@ -171,5 +171,4 @@ public class LinkedListDeque<T> {
 //        System.out.println(L.get(2));
 //        L.printDeque();
 //    }
-
 }
