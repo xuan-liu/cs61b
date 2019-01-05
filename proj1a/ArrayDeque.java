@@ -41,6 +41,7 @@ public class ArrayDeque<T> {
         items = newItems;
     }
 
+    /** Check whether it should be resize */
     private void checkResize(){
         if (size == items.length) {
             resize(size * 2);
@@ -58,14 +59,14 @@ public class ArrayDeque<T> {
         size = 0;
     }
 
-    /** Create a Deque. */
-    public ArrayDeque(T x) {
-        items = (T[]) new Object[8];
-        items[0] = x;
-        size = 1;
-        nextFirst = 7;
-        nextLast = 1;
-    }
+//    /** Create a Deque. */
+//    public ArrayDeque(T x) {
+//        items = (T[]) new Object[8];
+//        items[0] = x;
+//        size = 1;
+//        nextFirst = 7;
+//        nextLast = 1;
+//    }
 
     /** Adds an item to the front of the Deque. */
     public void addFirst(T x) {
@@ -130,6 +131,7 @@ public class ArrayDeque<T> {
         return toRemove;
     }
 
+    /** Gets the item at the given index */
     public T get(int index) {
         if (index < 0 || index > size - 1) {
             return null;
