@@ -29,11 +29,11 @@ public class TestPalindrome {
 
     @Test
     public void testIsPalindromeOffByOne() {
-        CharacterComparator OffByOne = new OffByOne();
-        assertTrue(palindrome.isPalindrome("flake", OffByOne));
-        assertTrue(palindrome.isPalindrome("a", OffByOne));
-        assertTrue(palindrome.isPalindrome("", OffByOne));
-        assertFalse(palindrome.isPalindrome("horse", OffByOne));
-        assertFalse(palindrome.isPalindrome("noon", OffByOne));
+        CharacterComparator offByOne = new OffByOne();
+        assertTrue(palindrome.isPalindrome("flake", offByOne));
+        assertTrue(palindrome.isPalindrome("a", offByOne));
+        assertTrue(palindrome.isPalindrome("", offByOne));
+        assertFalse(palindrome.isPalindrome("horse", offByOne));
+        assertFalse(palindrome.isPalindrome("noon", offByOne));
     }
 }

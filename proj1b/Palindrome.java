@@ -7,7 +7,7 @@ public class Palindrome {
         return deque;
     }
 
-    private boolean isPalindrome(Deque<Character> d){
+    private boolean isPalindrome(Deque<Character> d) {
         if (d.size() == 0 || d.size() == 1) {
             return true;
         } else {
@@ -24,7 +24,7 @@ public class Palindrome {
         return isPalindrome(deque);
     }
 
-    private boolean isPalindrome(Deque<Character> d, CharacterComparator cc){
+    private boolean isPalindrome(Deque<Character> d, CharacterComparator cc) {
         if (d.size() == 0 || d.size() == 1) {
             return true;
         } else {
