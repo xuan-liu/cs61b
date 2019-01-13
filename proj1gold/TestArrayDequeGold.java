@@ -10,10 +10,17 @@ public class TestArrayDequeGold {
         String msg = "\n";
 
         for (int i = 0; i < 10; i++) {
-            Integer randomNum = StdRandom.uniform(100);
-            ad.addFirst(randomNum);
-            sad.addFirst(randomNum);
-            msg = msg + "addFirst(" + randomNum + ")\n";
+            double randomNum = StdRandom.uniform();
+
+            if (randomNum < 0.5) {
+                sad.addFirst(i);
+                ad.addFirst(i);
+                msg = msg + "addFirst(" + i + ")\n";
+            } else {
+                sad.addLast(i);
+                ad.addLast(i);
+                msg = msg + "addLast(" + i + ")\n";
+            }
         }
 
         for (int i = 0; i < 10; i++) {
