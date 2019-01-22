@@ -31,6 +31,19 @@ public class BoringWorldDemo {
             }
         }
 
+//        for (int x = 2; x < 5; x += 1) {
+//            for (int y = 10; y < 20; y += 1) {
+//                world[x][y] = Tileset.GRASS;
+//            }
+//        }
+//        for (int x = 5; x < 8; x += 1) {
+//            for (int y = 5; y < 12; y += 1) {
+//                world[x][y] = Tileset.FLOOR;
+//            }
+//        }
+//        world[20][25] = Tileset.PLAYER;
+//        world[30][20] = Tileset.LOCKED_DOOR;
+
         // draws the world to the screen
         ter.renderFrame(world);
     }
