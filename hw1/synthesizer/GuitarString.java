@@ -24,7 +24,7 @@ public class GuitarString {
 
     /* Pluck the guitar string by replacing the buffer with white noise. */
     public void pluck() {
-        while(!buffer.isEmpty()) {
+        while (!buffer.isEmpty()) {
             buffer.dequeue();
         }
 
@@ -38,7 +38,7 @@ public class GuitarString {
      */
     public void tic() {
         Double toRemove = buffer.dequeue();
-        Double toAdd = (toRemove + buffer.peek())/2.0 * DECAY;
+        Double toAdd = (toRemove + buffer.peek()) / 2.0 * DECAY;
         buffer.enqueue(toAdd);
     }
 
