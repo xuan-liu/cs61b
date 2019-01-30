@@ -28,30 +28,28 @@ public class Game {
      * @return the 2D TETile[][] representing the state of the world
      */
     public TETile[][] playWithInputString(String input) {
-        // TODO: Fill out this method to run the game using the input passed in,
-        // and return a 2D tile representation of the world that would have been
-        // drawn if the same inputs had been given to playWithKeyboard().
-
         long seed;
 
         if (input.toLowerCase().contains("n") && input.toLowerCase().contains("s")) {
             int start = input.toLowerCase().indexOf("n") + 1;
             int end = input.toLowerCase().indexOf("s");
-            try {
-                seed = Long.parseLong(input.substring(start, end));
-            } catch(Exception e) {
-                throw new RuntimeException("Seed has to be an integer but you input: \"" + input.substring(start, end) + "\"");
-            }
+            seed = Long.parseLong(input.substring(start, end));
+//            try {
+//                seed = Long.parseLong(input.substring(start, end));
+//            } catch(Exception e) {
+//                throw new RuntimeException("Seed has to be an integer but you input: \"" +
+//                input.substring(start, end) + "\"");
+//            }
         } else {
             throw new RuntimeException("You must put a string start with 'n' and end with 's'.");
         }
 
-        TERenderer renderer = new TERenderer();
-        renderer.initialize(WIDTH, HEIGHT);
+//        TERenderer renderer = new TERenderer();
+//        renderer.initialize(WIDTH, HEIGHT);
         TETile[][] finalWorldFrame = new TETile[WIDTH][HEIGHT];
         WorldGenerator.generateWorld(seed, finalWorldFrame);
 
-        renderer.renderFrame(finalWorldFrame);
+//        renderer.renderFrame(finalWorldFrame);
         return finalWorldFrame;
     }
 }

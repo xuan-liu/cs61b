@@ -110,12 +110,12 @@ class WorldGenerator {
      * Recursively evolve the world.
      */
     private static void evolveWorld(Square square) {
-        if (!isValidSquare(square)) return;
+        if (!isValidSquare(square)) { return; }
 
         drawSquare(square);
 
         Square[] newSquares = square.generateSquares(RANDOM);
-        if (newSquares == null) return;
+        if (newSquares == null) { return; }
 
         for (int i = 0; i < newSquares.length; i++) {
             if (newSquares[i] != null) {
@@ -131,7 +131,7 @@ class WorldGenerator {
         evolveWorld(initialRoom);
 
         // add door in the initialRoom
-        Square.world[initialRoom.corner.x-1][initialRoom.corner.y+1] = Tileset.LOCKED_DOOR;
+        Square.world[initialRoom.corner.x - 1][initialRoom.corner.y + 1] = Tileset.LOCKED_DOOR;
     }
 
     /** used only for tests*/

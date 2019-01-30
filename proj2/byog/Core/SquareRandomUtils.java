@@ -12,43 +12,44 @@ class SquareRandomUtils {
     /**
      * Directions are where we generate new squares.
      */
-    private static final String[] directions = new String[] {"left", "right", "upper", "down"};
-    private static final double probHallWayToGenRoom = 0.9;
-    private static final int hallWaylengthBound = 10;
+    private static final String[] DIRECTIONS = new String[] {"left", "right", "upper", "down"};
+    private static final double PROB_HW_TO_GEN_ROOM = 0.9;
+    private static final int HW_LENGTH_BOUND = 10;
 
 
     static String[] getRandomDirections(Random random) {
-        RandomUtils.shuffle(random, directions);
+        RandomUtils.shuffle(random, DIRECTIONS);
         int size = RandomUtils.uniform(random, 1, 4);
         String[] temp = new String[size];
-        System.arraycopy(directions, 0, temp, 0, size);
+        System.arraycopy(DIRECTIONS, 0, temp, 0, size);
         return temp;
     }
 
     static boolean getRandomSquareTypeAsRoom(Random random) {
-        return  (RandomUtils.bernoulli(random, probHallWayToGenRoom));
+        return  (RandomUtils.bernoulli(random, PROB_HW_TO_GEN_ROOM));
     }
 
     static Room getInitialRandomRoom(Random random, TETile[][] world) {
-        int width = RandomUtils.uniform(random, 3, DEFAULT_MAX_SQUARE_WIDTH+1);
-        int height = RandomUtils.uniform(random, 3, DEFAULT_MAX_SQUARE_HEIGHT+1);
-        int x = RandomUtils.uniform(random, world.length/2 - 5, world.length/2 + 5);
-        int y = RandomUtils.uniform(random, 5, world[0].length/2);
+        int width = RandomUtils.uniform(random, 3, DEFAULT_MAX_SQUARE_WIDTH + 1);
+        int height = RandomUtils.uniform(random, 3, DEFAULT_MAX_SQUARE_HEIGHT + 1);
+        int x = RandomUtils.uniform(random, world.length / 2 - 5, world.length / 2 + 5);
+        int y = RandomUtils.uniform(random, 5, world[0].length / 2);
         return new Room(new Point(x, y), width, height);
     }
 
     private static int getNextHallWayLength(Random random, Square square, String direction) {
         switch (direction) {
             case "left":
-                return RandomUtils.uniform(random, 1, Math.min(square.corner.x, hallWaylengthBound));
+                return RandomUtils.uniform(random, 1,
+                        Math.min(square.corner.x, HW_LENGTH_BOUND));
             case "right":
-                return RandomUtils.uniform(random,
-                        1, Math.min(Square.world.length - (square.corner.x + square.width), hallWaylengthBound));
+                return RandomUtils.uniform(random, 1, Math.min(Square.world.length -
+                        (square.corner.x + square.width), HW_LENGTH_BOUND));
             case "upper":
-                return RandomUtils.uniform(random,
-                        1, Math.min(Square.world[0].length - (square.corner.y + square.height), hallWaylengthBound));
+                return RandomUtils.uniform(random, 1, Math.min(Square.world[0].length -
+                        (square.corner.y + square.height), HW_LENGTH_BOUND));
             case "bottom":
-                return RandomUtils.uniform(random, 1, Math.min(square.corner.y, hallWaylengthBound));
+                return RandomUtils.uniform(random, 1, Math.min(square.corner.y, HW_LENGTH_BOUND));
             default:
                 throw new IllegalArgumentException("unknown direction: " + direction);
         }
@@ -104,7 +105,8 @@ class SquareRandomUtils {
     }
 
     /** This method is written only for HorizontalHW to generate side Vertical HallWays*/
-    static VerticalHW generateRandomSideVerHW(Random random, HorizontalHW square, String direction) {
+    static VerticalHW generateRandomSideVerHW(Random random,
+                                              HorizontalHW square, String direction) {
         // the max bound is up to you
         int length = RandomUtils.uniform(random, 2, 7);
         int y = RandomUtils.uniform(random,
@@ -119,13 +121,15 @@ class SquareRandomUtils {
                 x = square.corner.x + square.width;
                 break;
             default:
-                throw new RuntimeException("generateRandomSideVerHW only supported left and right directions");
+                throw new RuntimeException("generateRandomSideVerHW " +
+                        "only supported left and right directions");
         }
         return new VerticalHW(new Point(x, y), length);
     }
 
     /** This method is written only for VerticalHW to generate top down Horizontal HallWays*/
-    static HorizontalHW generateRandomTopDownHoriHW(Random random, VerticalHW square, String direction) {
+    static HorizontalHW generateRandomTopDownHoriHW(Random random,
+                                                    VerticalHW square, String direction) {
         // the max bound is up to you
         int length = RandomUtils.uniform(random, 2, 7);
         int x = RandomUtils.uniform(random,
@@ -140,7 +144,8 @@ class SquareRandomUtils {
                 y = square.corner.y - 1;
                 break;
             default:
-                throw new RuntimeException("generateRandomTopDownHoriHW only supported upper and bottom directions");
+                throw new RuntimeException("generateRandomTopDownHoriHW " +
+                        "only supported upper and bottom directions");
         }
         return new HorizontalHW(new Point(x, y), length);
     }
@@ -152,7 +157,7 @@ class SquareRandomUtils {
         int x;
         try {
             x = RandomUtils.uniform(random,
-                    square.corner.x - width + 1, square.corner.x + square.width -1 + width - 1);
+                    square.corner.x - width + 1, square.corner.x + square.width - 1 + width - 1);
         } catch (IllegalArgumentException e) {
 //            System.out.println(e.getMessage());
             return null;
