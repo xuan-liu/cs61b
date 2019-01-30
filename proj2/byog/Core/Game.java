@@ -32,7 +32,18 @@ public class Game {
         // and return a 2D tile representation of the world that would have been
         // drawn if the same inputs had been given to playWithKeyboard().
 
-        TETile[][] finalWorldFrame = null;
+        if (input.charAt(0) != 'N') {
+            throw new IllegalArgumentException("Mal-formed start string, expected N but got " + input.charAt(0));
+        }
+
+        long seed = Long.parseLong(input.substring(1, input.length()-1));
+
+        TERenderer renderer = new TERenderer();
+        renderer.initialize(WIDTH, HEIGHT);
+        TETile[][] finalWorldFrame = new TETile[WIDTH][HEIGHT];
+        WorldGenerator.generateWorld(seed, finalWorldFrame);
+
+        renderer.renderFrame(finalWorldFrame);
         return finalWorldFrame;
     }
 }
