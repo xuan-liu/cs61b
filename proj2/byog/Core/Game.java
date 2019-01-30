@@ -32,11 +32,19 @@ public class Game {
         // and return a 2D tile representation of the world that would have been
         // drawn if the same inputs had been given to playWithKeyboard().
 
-        if (input.charAt(0) != 'N') {
-            throw new IllegalArgumentException("Mal-formed start string, expected N but got " + input.charAt(0));
-        }
+        long seed;
 
-        long seed = Long.parseLong(input.substring(1, input.length()-1));
+        if (input.toLowerCase().contains("n") && input.toLowerCase().contains("s")) {
+            int start = input.toLowerCase().indexOf("n") + 1;
+            int end = input.toLowerCase().indexOf("s");
+            try {
+                seed = Long.parseLong(input.substring(start, end));
+            } catch(Exception e) {
+                throw new RuntimeException("Seed has to be an integer but you input: \"" + input.substring(start, end) + "\"");
+            }
+        } else {
+            throw new RuntimeException("You must put a string start with 'n' and end with 's'.");
+        }
 
         TERenderer renderer = new TERenderer();
         renderer.initialize(WIDTH, HEIGHT);
