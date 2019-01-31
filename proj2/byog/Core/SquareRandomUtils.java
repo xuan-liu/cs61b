@@ -43,11 +43,11 @@ class SquareRandomUtils {
                 return RandomUtils.uniform(random, 1,
                         Math.min(square.corner.x, HW_LENGTH_BOUND));
             case "right":
-                return RandomUtils.uniform(random, 1, Math.min(Square.world.length -
-                        (square.corner.x + square.width), HW_LENGTH_BOUND));
+                return RandomUtils.uniform(random, 1, Math.min(Square.world.length
+                        - (square.corner.x + square.width), HW_LENGTH_BOUND));
             case "upper":
-                return RandomUtils.uniform(random, 1, Math.min(Square.world[0].length -
-                        (square.corner.y + square.height), HW_LENGTH_BOUND));
+                return RandomUtils.uniform(random, 1, Math.min(Square.world[0].length
+                        - (square.corner.y + square.height), HW_LENGTH_BOUND));
             case "bottom":
                 return RandomUtils.uniform(random, 1, Math.min(square.corner.y, HW_LENGTH_BOUND));
             default:
@@ -121,8 +121,8 @@ class SquareRandomUtils {
                 x = square.corner.x + square.width;
                 break;
             default:
-                throw new RuntimeException("generateRandomSideVerHW " +
-                        "only supported left and right directions");
+                throw new RuntimeException("generateRandomSideVerHW "
+                        + "only supported left and right directions");
         }
         return new VerticalHW(new Point(x, y), length);
     }
@@ -144,8 +144,8 @@ class SquareRandomUtils {
                 y = square.corner.y - 1;
                 break;
             default:
-                throw new RuntimeException("generateRandomTopDownHoriHW " +
-                        "only supported upper and bottom directions");
+                throw new RuntimeException("generateRandomTopDownHoriHW "
+                        + "only supported upper and bottom directions");
         }
         return new HorizontalHW(new Point(x, y), length);
     }

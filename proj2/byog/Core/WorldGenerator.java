@@ -110,12 +110,16 @@ class WorldGenerator {
      * Recursively evolve the world.
      */
     private static void evolveWorld(Square square) {
-        if (!isValidSquare(square)) { return; }
+        if (!isValidSquare(square)) {
+            return;
+        }
 
         drawSquare(square);
 
         Square[] newSquares = square.generateSquares(RANDOM);
-        if (newSquares == null) { return; }
+        if (newSquares == null) {
+            return;
+        }
 
         for (int i = 0; i < newSquares.length; i++) {
             if (newSquares[i] != null) {
