@@ -1,6 +1,8 @@
 package hw2;
 
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Percolation {
     private boolean[][] grid;
@@ -40,25 +42,24 @@ public class Percolation {
     /** check whether there are open neighbor, if yes, union with it */
     private void checkUnion(int row, int col) {
         int here = xyTo1D(row, col);
+        List<Integer> neighbors = new ArrayList<>();
+
         if (row > 0 && grid[row - 1][col] == true) {
-            int neigh = xyTo1D(row - 1, col);
-            wquWithHT.union(here, neigh);
-            wquWithH.union(here, neigh);
+            neighbors.add(xyTo1D(row - 1, col));
         }
         if (row < grid.length - 1 && grid[row + 1][col] == true) {
-            int neigh = xyTo1D(row + 1, col);
-            wquWithHT.union(here, neigh);
-            wquWithH.union(here, neigh);
+            neighbors.add(xyTo1D(row + 1, col));
         }
         if (col > 0 && grid[row][col - 1] == true) {
-            int neigh = xyTo1D(row, col - 1);
-            wquWithHT.union(here, neigh);
-            wquWithH.union(here, neigh);
+            neighbors.add(xyTo1D(row, col - 1));
         }
         if (col < grid.length - 1 && grid[row][col + 1] == true) {
-            int neigh = xyTo1D(row, col + 1);
-            wquWithHT.union(here, neigh);
-            wquWithH.union(here, neigh);
+            neighbors.add(xyTo1D(row, col + 1));
+        }
+
+        for (int i : neighbors) {
+            wquWithHT.union(here, i);
+            wquWithH.union(here, i);
         }
     }
 

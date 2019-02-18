@@ -4,7 +4,7 @@ import edu.princeton.cs.introcs.StdRandom;
 import edu.princeton.cs.introcs.StdStats;
 
 public class PercolationStats {
-    double[] threshold;
+    private double[] threshold;
 
     /** perform T independent experiments on an N-by-N grid */
     public PercolationStats(int N, int T, PercolationFactory pf) {
@@ -15,10 +15,10 @@ public class PercolationStats {
 
         threshold = new double[T];
 
-        for (int i = 0; i < T; i++){
+        for (int i = 0; i < T; i++) {
             Percolation p = pf.make(N);
 
-            while(!p.percolates()) {
+            while (!p.percolates()) {
                 int rRow = StdRandom.uniform(N);
                 int rCol = StdRandom.uniform(N);
                 p.open(rRow, rCol);
@@ -41,17 +41,12 @@ public class PercolationStats {
 
     /** low endpoint of 95% confidence interval */
     public double confidenceLow() {
-        return mean() - 1.96 * Math.sqrt(stddev() / threshold.length);
+        return mean() - 1.96 * stddev() / Math.sqrt(threshold.length);
     }
 
     /** high endpoint of 95% confidence interval */
     public double confidenceHigh() {
-        return mean() + 1.96 * Math.sqrt(stddev() / threshold.length);
+        return mean() + 1.96 * stddev() / Math.sqrt(threshold.length);
     }
 
-    public static void main(String[] args) {
-//        PercolationFactory pf = new PercolationFactory;
-//        PercolationStats test = new PercolationStats(5,3);
-//        System.out.println(test.mean());
-    }
 }
