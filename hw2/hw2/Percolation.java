@@ -44,16 +44,16 @@ public class Percolation {
         int here = xyTo1D(row, col);
         List<Integer> neighbors = new ArrayList<>();
 
-        if (row > 0 && grid[row - 1][col] == true) {
+        if (row > 0 && isOpen(row - 1, col)) {
             neighbors.add(xyTo1D(row - 1, col));
         }
-        if (row < grid.length - 1 && grid[row + 1][col] == true) {
+        if (row < grid.length - 1 && isOpen(row + 1, col)) {
             neighbors.add(xyTo1D(row + 1, col));
         }
-        if (col > 0 && grid[row][col - 1] == true) {
+        if (col > 0 && isOpen(row, col - 1)) {
             neighbors.add(xyTo1D(row, col - 1));
         }
-        if (col < grid.length - 1 && grid[row][col + 1] == true) {
+        if (col < grid.length - 1 && isOpen(row, col + 1)) {
             neighbors.add(xyTo1D(row, col + 1));
         }
 
