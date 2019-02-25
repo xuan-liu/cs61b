@@ -1,12 +1,11 @@
 package hw3.hash;
 
 import java.util.List;
-import java.util.Map;
 import java.util.HashMap;
 
 public class OomageTestUtility {
     public static boolean haveNiceHashCodeSpread(List<Oomage> oomages, int M) {
-        
+
         HashMap<Integer, Integer> hashMap = new HashMap<>();
         for (int i = 0; i < M; i++) {
             hashMap.put(i, 0);
