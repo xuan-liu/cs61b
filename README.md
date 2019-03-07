@@ -1,2 +1,2 @@
 # cs61b
-My solution of UC Berkeley, CS61B, Spring 2018
+My solution of UC Berkeley, CS 61B: Data Structures, Spring 2018
