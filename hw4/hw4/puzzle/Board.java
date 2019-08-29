@@ -156,20 +156,11 @@ public class Board implements WorldState {
         s.append(N + "\n");
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
-                s.append(String.format("%2d ", tileAt(i,j)));
+                s.append(String.format("%2d ", tileAt(i, j)));
             }
             s.append("\n");
         }
         s.append("\n");
         return s.toString();
     }
-
-    public static void main(String[] args) {
-        ArrayList<Integer> a = new ArrayList<>();
-        a.add(1);
-        a.add(2);
-        System.out.println(a);
-        System.out.println(a.indexOf(2));
-    }
-
 }

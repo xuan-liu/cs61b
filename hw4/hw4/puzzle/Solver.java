@@ -5,8 +5,9 @@ import edu.princeton.cs.algs4.MinPQ;
 public class Solver {
     private ArrayList<WorldState> solution;
 
-    /* Constructor which solves the puzzle, computing everything necessary for moves() and solution() to
-     not have to solve the problem again. Solves the puzzle using the A* algorithm. Assumes a solution exists. **/
+    /* Constructor which solves the puzzle, computing everything necessary for moves() and
+    solution() to not have to solve the problem again. Solves the puzzle using the A*
+    algorithm. Assumes a solution exists. **/
     public Solver(WorldState initial) {
         solution = new ArrayList<>();
 
@@ -23,7 +24,8 @@ public class Solver {
             // Remove the search node with minimum priority.
             SNode X = pq.delMin();
 
-            // for each neighbor of X’s world state, create a new search node and insert it into the priority queue.
+            // for each neighbor of X’s world state, create a new search node and
+            // insert it into the priority queue.
             for (WorldState nb: X.ws.neighbors()) {
 
                 // critical optimization
@@ -43,8 +45,8 @@ public class Solver {
     }
 
 
-    /* define a search node of the puzzle. Each SearchNode represents one “move sequence” as defined in
-    the conceptual description of Best-First Search. **/
+    /* define a search node of the puzzle. Each SearchNode represents one “move sequence”
+     as defined in the conceptual description of Best-First Search. **/
     private class SNode implements Comparable<SNode> {
         private WorldState ws;
         private int numberOfMove;
@@ -62,7 +64,7 @@ public class Solver {
         }
     }
 
-    /* Returns the minimum number of moves to solve the puzzle starting at the initial WorldState.**/
+    /* Returns the minimum number of moves to solve the puzzle starting at initial WorldState.**/
     public int moves() {
         return solution.size() - 1;
     }
